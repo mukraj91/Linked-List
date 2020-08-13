@@ -31,11 +31,8 @@ public:
 
    MukeshNode* createMukeshNode(int data);
    void insetAtBeginningOfMukeshLinkedList();
-<<<<<<< HEAD
    void insertAtTailOfMukeshLinkedList();
    void insertAtParticularPositionOfMukeshList();
-=======
->>>>>>> 6236b28... single linked list opeartion
    void displayMukeshLinkedList();
 
 
@@ -45,20 +42,12 @@ public:
 /*Create a new Mukesh node*/
 MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
 
-<<<<<<< HEAD
   struct MukeshNode *newMukeshNode = NULL;
-=======
-   MukeshNode *newMukeshNode = NULL;
->>>>>>> 6236b28... single linked list opeartion
    newMukeshNode = new MukeshNode();
 
    if (newMukeshNode == NULL) {
 
-<<<<<<< HEAD
       cout<<"MukeshNode is not allocated : " <<endl;
-=======
-      cout<<"MukeshNode is empty : " <<endl;
->>>>>>> 6236b28... single linked list opeartion
       return 0;
 
    }
@@ -67,25 +56,14 @@ MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
       newMukeshNode->data = value;
       newMukeshNode->next = NULL;
       return newMukeshNode;
-<<<<<<< HEAD
 }
-=======
-
-   }
-
-   return newMukeshNode;
->>>>>>> 6236b28... single linked list opeartion
 
 }
 
 /* Insert at beginning*/
 void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 
-<<<<<<< HEAD
   struct MukeshNode *mukeshNode, *temp;
-=======
-   MukeshNode *mukeshNode, *temp;
->>>>>>> 6236b28... single linked list opeartion
    int value;
 
    cout<<"Enter the value to be inserted"<<endl;
@@ -110,7 +88,6 @@ void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 
 }
 
-<<<<<<< HEAD
 
 void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
   struct MukeshNode *mukeshNode, *temp;
@@ -214,12 +191,6 @@ else {
 void MukeshLinkedList::displayMukeshLinkedList() {
 
    struct MukeshNode* mukeshNode;
-=======
-/*Display the Linkedlist Node*/
-void MukeshLinkedList::displayMukeshLinkedList() {
-
-   MukeshNode* temp;
->>>>>>> 6236b28... single linked list opeartion
 
    if(start == NULL) {
 
@@ -227,7 +198,6 @@ void MukeshLinkedList::displayMukeshLinkedList() {
       return ;
    }
    else {
-<<<<<<< HEAD
 
       mukeshNode = start;
 
@@ -235,14 +205,6 @@ void MukeshLinkedList::displayMukeshLinkedList() {
 
          cout<< mukeshNode->data<<"->";
          mukeshNode = mukeshNode->next;
-=======
-      temp = start;
-
-      while(temp != NULL) {
-
-         cout<< temp->data<<"->";
-         temp = temp->next;
->>>>>>> 6236b28... single linked list opeartion
       }
 
    }
@@ -265,15 +227,11 @@ int main() {
 
       cout<<"01. Insert at beginning"<<endl;
 
-<<<<<<< HEAD
       cout<<"02. Insert at last"<<endl;
 
       cout<<"03. Insert at specific position"<<endl;
 
       cout<<"04. Display the nodes"<<endl;
-=======
-      cout<<"02. Display the nodes"<<endl;
->>>>>>> 6236b28... single linked list opeartion
 
       cout<<"10. Exit the LinkedList Operation"<<endl;
 
@@ -291,7 +249,6 @@ int main() {
          break;
 
       case 2 :
-<<<<<<< HEAD
          cout<<"2. Insert at last of the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.insertAtTailOfMukeshLinkedList();
@@ -307,9 +264,6 @@ int main() {
 
       case 4 :
          cout <<"4. Display the Mukesh LinkedList"<<endl;
-=======
-         cout <<"2. Display the Mukesh LinkedList"<<endl;
->>>>>>> 6236b28... single linked list opeartion
 
          mukeshLinkedList.displayMukeshLinkedList();
 

@@ -8,14 +8,11 @@ Insert the element in the linkedlist.
 
 (i) Insert a element at the begining of the linkedlist.
 (ii) Display the linkedlist
-<<<<<<< HEAD
 --------------------------
 13/08/20
 
 (iii) Inserted node at tail of the Linkedlist
 
 (iv) Inserted at specific position of the Linkedlist
-=======
->>>>>>> 6236b28... single linked list opeartion
 
 
