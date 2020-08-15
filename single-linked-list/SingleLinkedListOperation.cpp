@@ -33,6 +33,8 @@ public:
    void insetAtBeginningOfMukeshLinkedList();
    void insertAtTailOfMukeshLinkedList();
    void insertAtParticularPositionOfMukeshList();
+   void deleteAtSpecificPositionOfMukeshList();
+
    void displayMukeshLinkedList();
 
 
@@ -43,12 +45,14 @@ public:
 MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
 
   struct MukeshNode *newMukeshNode = NULL;
+
    newMukeshNode = new MukeshNode();
 
    if (newMukeshNode == NULL) {
 
       cout<<"MukeshNode is not allocated : " <<endl;
-      return 0;
+
+     return 0;
 
    }
    else {
@@ -56,7 +60,7 @@ MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
       newMukeshNode->data = value;
       newMukeshNode->next = NULL;
       return newMukeshNode;
-}
+  }
 
 }
 
@@ -64,6 +68,7 @@ MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
 void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 
   struct MukeshNode *mukeshNode, *temp;
+
    int value;
 
    cout<<"Enter the value to be inserted"<<endl;
@@ -87,7 +92,6 @@ void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
    cout<<"Element inserted at beginning"<<endl;
 
 }
-
 
 void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
   struct MukeshNode *mukeshNode, *temp;
@@ -187,6 +191,69 @@ else {
 }
 
 
+void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
+
+   int position, count= 0 , i ;
+
+   if (start == NULL) {
+
+      cout<<"Mukesh LinkedList is empty"<<endl;
+      return ;
+   }
+
+   cout<<"Enter the position of node to be deleted"<<endl;
+   cin>>position;
+
+   MukeshNode *mukeshNode, *temp, *ptr;
+
+   temp = start;
+
+   /*If position is one and if you delete the node at first position.
+    * You have to move the node pointer one step ahead  */
+
+   if (position == 1) {
+
+      start = temp->next;
+   }
+   else {
+
+      /*You will count the number of the node present in Linkedlist*/
+
+      while (temp != NULL) {
+
+         temp = temp->next;
+
+         count++;
+
+      }
+        /*You will check the position till the end of the node*/
+      if (position > 0 && position <= count) {
+
+         temp = start; // temp will point to start of the node.
+
+         for (i = 1 ; i < position ; i++) {
+
+            ptr = temp; // Ptr Pointer basically joinet the previous node of
+                        //  the delete node to next node of position of the node to
+                        // deleted from the LinkedList.
+            temp  = temp->next;
+         }
+
+         ptr->next = temp->next;
+
+      }
+      else {
+
+         cout<<"Position out of range"<<endl;
+      }
+
+      delete(temp);
+      cout<<"Element of the LinkedList deleted"<<endl;
+   }
+
+}
+
+
 /*Display the Linkedlist Node*/
 void MukeshLinkedList::displayMukeshLinkedList() {
 
@@ -199,7 +266,7 @@ void MukeshLinkedList::displayMukeshLinkedList() {
    }
    else {
 
-      mukeshNode = start;
+       mukeshNode = start;
 
       while(mukeshNode != NULL) {
 
@@ -231,7 +298,10 @@ int main() {
 
       cout<<"03. Insert at specific position"<<endl;
 
-      cout<<"04. Display the nodes"<<endl;
+      cout<<"04. Delete at specific position"<<endl;
+
+      cout<<"05. Display the nodes"<<endl;
+
 
       cout<<"10. Exit the LinkedList Operation"<<endl;
 
@@ -249,7 +319,7 @@ int main() {
          break;
 
       case 2 :
-         cout<<"2. Insert at last of the Mukesh LinkedList"<<endl;
+        cout<<"2. Insert at last of the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.insertAtTailOfMukeshLinkedList();
 
@@ -263,6 +333,13 @@ int main() {
          break;
 
       case 4 :
+         cout<<"4. Delete from specific position"<<endl;
+
+         mukeshLinkedList.deleteAtSpecificPositionOfMukeshList();
+
+         break;
+
+      case 5 :
          cout <<"4. Display the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.displayMukeshLinkedList();
