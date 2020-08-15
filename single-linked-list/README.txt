@@ -20,3 +20,7 @@ Insert the element in the linkedlist.
 
 (v) Delete the node from specific position
 
+-------------------------------------------------
+15/08/2020
+
+(vi) 
