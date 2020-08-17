@@ -23,6 +23,49 @@ class MukeshLinkedList {
 
 public:
 
+   enum LinkedListErrorCode {
+
+      LinkedList_Error_Code__INVALIDE = 0 ,
+      LinkedList_Error_Code__EMPTY ,
+      LinkedList_Error_Code__NOT_FOUND ,
+      LinkedList_Error_Code__MOMORY_NOT_ALLOCATED ,
+      LinkedList_Error_Code__POSITION_OUT_OF_RANGE
+
+   };
+
+
+   void toStringLinkedList(LinkedListErrorCode error) {
+
+      switch(error) {
+
+      case LinkedList_Error_Code__EMPTY :
+
+         cout<<endl<<"***LinkedList empty***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__NOT_FOUND :
+
+         cout<<endl<<"***LinkedList not found***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__MOMORY_NOT_ALLOCATED :
+
+         cout<<endl<<"***Memory is not allocated***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__POSITION_OUT_OF_RANGE :
+
+         cout<<endl<<"***LinkedList Position out of range***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__INVALIDE :
+
+         cout<<endl<<"***LinkedList invalide***"<<endl;
+         break;
+      }
+   }
+
+
    // MukeshLinkedList Constructor
    MukeshLinkedList() {
 
@@ -30,9 +73,13 @@ public:
    }
 
    MukeshNode* createMukeshNode(int data);
+
    void insetAtBeginningOfMukeshLinkedList();
+
    void insertAtTailOfMukeshLinkedList();
+
    void insertAtParticularPositionOfMukeshList();
+
    void deleteAtSpecificPositionOfMukeshList();
 
    void sortTheMukeshLinkedList();
@@ -46,30 +93,28 @@ public:
 /*Create a new Mukesh node*/
 MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
 
-  struct MukeshNode *newMukeshNode = NULL;
+   struct MukeshNode *newMukeshNode = NULL;
 
    newMukeshNode = new MukeshNode();
 
    if (newMukeshNode == NULL) {
 
-      cout<<"MukeshNode is not allocated : " <<endl;
-
-     return 0;
-
+      toStringLinkedList(LinkedList_Error_Code__MOMORY_NOT_ALLOCATED);
+      return 0;
    }
    else {
 
       newMukeshNode->data = value;
       newMukeshNode->next = NULL;
       return newMukeshNode;
-  }
+   }
 
 }
 
 /* Insert at beginning*/
 void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 
-  struct MukeshNode *mukeshNode, *temp;
+   struct MukeshNode *mukeshNode, *temp;
 
    int value;
 
@@ -96,7 +141,7 @@ void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 }
 
 void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
-  struct MukeshNode *mukeshNode, *temp;
+   struct MukeshNode *mukeshNode, *temp;
    int value;
    cout<<"Enter the value to be insert"<<endl;
    cin>>value;
@@ -111,14 +156,14 @@ void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
     * first element
     **/
 
-    if (start == NULL) {
+   if (start == NULL) {
 
-       start = mukeshNode;
-       start->next = NULL;
-    }
-    else {
+      start = mukeshNode;
+      start->next = NULL;
+   }
+   else {
 
-     temp = start;
+      temp = start;
 
       while(temp->next != NULL) {
 
@@ -128,7 +173,7 @@ void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
       mukeshNode->next = NULL; // Last node next should be NULL
       temp->next = mukeshNode;
    }
-      cout<<"Element inserted at last"<<endl;
+   cout<<"Element inserted at last"<<endl;
 
 }
 
@@ -157,37 +202,37 @@ void MukeshLinkedList::insertAtParticularPositionOfMukeshList() {
     * If the position is one, then insert the node at first place
     * **/
 
-if (position == 1) {
+   if (position == 1) {
 
-   if (start == NULL) {
+      if (start == NULL) {
 
-      start = mukeshNode;
-      start->next = NULL;
+         start = mukeshNode;
+         start->next = NULL;
+      }
+      else {
+         ptr = start;
+         start = mukeshNode;
+         start->next = ptr;
+      }
+   }
+   else if (position > 1 && position <= count) {
+
+      temp = start;
+
+      for (i = 1 ; i < position ; i++) {
+
+         ptr = temp;
+         temp = temp->next;
+
+      }
+
+      ptr->next = mukeshNode;
+      mukeshNode->next = temp;
+
    }
    else {
-          ptr = start;
-          start = mukeshNode;
-          start->next = ptr;
+      toStringLinkedList(LinkedList_Error_Code__POSITION_OUT_OF_RANGE);
    }
-}
-else if (position > 1 && position <= count) {
-
-temp = start;
-
-for (i = 1 ; i < position ; i++) {
-
-   ptr = temp;
-   temp = temp->next;
-
-}
-
-ptr->next = mukeshNode;
-mukeshNode->next = temp;
-
-}
-else {
-   cout<<"Position isout of range"<<endl;
-}
 
 
 }
@@ -199,7 +244,8 @@ void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
 
    if (start == NULL) {
 
-      cout<<"Mukesh LinkedList is empty"<<endl;
+      toStringLinkedList(LinkedList_Error_Code__EMPTY);
+
       return ;
    }
 
@@ -228,7 +274,7 @@ void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
          count++;
 
       }
-        /*You will check the position till the end of the node*/
+      /*You will check the position till the end of the node*/
       if (position > 0 && position <= count) {
 
          temp = start; // temp will point to start of the node.
@@ -236,8 +282,8 @@ void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
          for (i = 1 ; i < position ; i++) {
 
             ptr = temp; // Ptr Pointer basically joinet the previous node of
-                        //  the delete node to next node of position of the node to
-                        // deleted from the LinkedList.
+            //  the delete node to next node of position of the node to
+            // deleted from the LinkedList.
             temp  = temp->next;
          }
 
@@ -246,7 +292,7 @@ void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
       }
       else {
 
-         cout<<"Position out of range"<<endl;
+         toStringLinkedList(LinkedList_Error_Code__POSITION_OUT_OF_RANGE);
       }
 
       delete(temp);
@@ -264,9 +310,9 @@ void MukeshLinkedList::sortTheMukeshLinkedList() {
    /**Check the start of the linkedlist first**/
    if (start == NULL) {
 
-      cout<<"Linkedlist is empty"<<endl;
+      toStringLinkedList(LinkedList_Error_Code__EMPTY);
       return;
-}
+   }
 
    mukeshNode = start; // Mukeshnode Point to the first position of the linkedlist.
 
@@ -298,12 +344,12 @@ void MukeshLinkedList::displayMukeshLinkedList() {
 
    if(start == NULL) {
 
-      cout<<"Mukesh LinkedList is empty"<<endl;
+      toStringLinkedList(LinkedList_Error_Code__EMPTY);
       return ;
    }
    else {
 
-       mukeshNode = start;
+      mukeshNode = start;
 
       while(mukeshNode != NULL) {
 
@@ -339,7 +385,7 @@ int main() {
 
       cout<<"05. Sort the linkedlist"<<endl;
 
-      cout<<"05. Display the nodes"<<endl;
+      cout<<"06. Display the nodes"<<endl;
 
 
       cout<<"10. Exit the LinkedList Operation"<<endl;
@@ -358,7 +404,7 @@ int main() {
          break;
 
       case 2 :
-        cout<<"2. Insert at last of the Mukesh LinkedList"<<endl;
+         cout<<"2. Insert at last of the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.insertAtTailOfMukeshLinkedList();
 
@@ -385,8 +431,8 @@ int main() {
          break;
 
 
-      case 5 :
-         cout <<"4. Display the Mukesh LinkedList"<<endl;
+      case 6 :
+         cout <<"6. Display the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.displayMukeshLinkedList();
 
