@@ -34,38 +34,6 @@ public:
    };
 
 
-   void toStringLinkedList(LinkedListErrorCode error) {
-
-      switch(error) {
-
-      case LinkedList_Error_Code__EMPTY :
-
-         cout<<endl<<"***LinkedList empty***"<<endl;
-         break;
-
-      case LinkedList_Error_Code__NOT_FOUND :
-
-         cout<<endl<<"***LinkedList not found***"<<endl;
-         break;
-
-      case LinkedList_Error_Code__MOMORY_NOT_ALLOCATED :
-
-         cout<<endl<<"***Memory is not allocated***"<<endl;
-         break;
-
-      case LinkedList_Error_Code__POSITION_OUT_OF_RANGE :
-
-         cout<<endl<<"***LinkedList Position out of range***"<<endl;
-         break;
-
-      case LinkedList_Error_Code__INVALIDE :
-
-         cout<<endl<<"***LinkedList invalide***"<<endl;
-         break;
-      }
-   }
-
-
    // MukeshLinkedList Constructor
    MukeshLinkedList() {
 
@@ -89,6 +57,37 @@ public:
 
 };
 
+
+void MukeshLinkedList::toStringLinkedList(LinkedListErrorCode error) {
+
+   switch(error) {
+
+   case LinkedList_Error_Code__EMPTY :
+
+      cout<<endl<<"***LinkedList empty***"<<endl;
+      break;
+
+   case LinkedList_Error_Code__NOT_FOUND :
+
+      cout<<endl<<"***LinkedList not found***"<<endl;
+      break;
+
+   case LinkedList_Error_Code__MOMORY_NOT_ALLOCATED :
+
+      cout<<endl<<"***Memory is not allocated***"<<endl;
+      break;
+
+   case LinkedList_Error_Code__POSITION_OUT_OF_RANGE :
+
+      cout<<endl<<"***LinkedList Position out of range***"<<endl;
+      break;
+
+   case LinkedList_Error_Code__INVALIDE :
+
+      cout<<endl<<"***LinkedList invalide***"<<endl;
+      break;
+   }
+}
 
 /*Create a new Mukesh node*/
 MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
