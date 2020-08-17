@@ -35,6 +35,8 @@ public:
    void insertAtParticularPositionOfMukeshList();
    void deleteAtSpecificPositionOfMukeshList();
 
+   void sortTheMukeshLinkedList();
+
    void displayMukeshLinkedList();
 
 
@@ -254,6 +256,41 @@ void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
 }
 
 
+void MukeshLinkedList::sortTheMukeshLinkedList() {
+
+   MukeshNode *mukeshNode, *ptr;
+   int value;
+
+   /**Check the start of the linkedlist first**/
+   if (start == NULL) {
+
+      cout<<"Linkedlist is empty"<<endl;
+      return;
+}
+
+   mukeshNode = start; // Mukeshnode Point to the first position of the linkedlist.
+
+   while (mukeshNode != NULL) {
+
+      for (ptr = mukeshNode->next; ptr != NULL ; ptr = ptr->next) {
+
+         if (mukeshNode->data > ptr->data) {
+
+            value = ptr->data;
+
+            ptr->data = mukeshNode->data;
+
+            mukeshNode->data = value;
+
+         }
+      }
+
+      mukeshNode = mukeshNode->next;
+   }
+
+}
+
+
 /*Display the Linkedlist Node*/
 void MukeshLinkedList::displayMukeshLinkedList() {
 
@@ -300,6 +337,8 @@ int main() {
 
       cout<<"04. Delete at specific position"<<endl;
 
+      cout<<"05. Sort the linkedlist"<<endl;
+
       cout<<"05. Display the nodes"<<endl;
 
 
@@ -338,6 +377,13 @@ int main() {
          mukeshLinkedList.deleteAtSpecificPositionOfMukeshList();
 
          break;
+
+      case 5 :
+         cout<<"5. Sort the linkedlist"<<endl;
+
+         mukeshLinkedList.sortTheMukeshLinkedList();
+         break;
+
 
       case 5 :
          cout <<"4. Display the Mukesh LinkedList"<<endl;
