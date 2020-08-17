@@ -24,6 +24,7 @@ Insert the element in the linkedlist.
 17/08/2020
 
 (vi) Sort the linkedlist of the element 
+(vii) Search the element of the linkedlist
 
 
 
