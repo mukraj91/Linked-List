@@ -23,15 +23,7 @@ class MukeshLinkedList {
 
 public:
 
-   enum LinkedListErrorCode {
 
-      LinkedList_Error_Code__INVALIDE = 0 ,
-      LinkedList_Error_Code__EMPTY ,
-      LinkedList_Error_Code__NOT_FOUND ,
-      LinkedList_Error_Code__MOMORY_NOT_ALLOCATED ,
-      LinkedList_Error_Code__POSITION_OUT_OF_RANGE
-
-   };
 
 
    // MukeshLinkedList Constructor
@@ -52,42 +44,57 @@ public:
 
    void sortTheMukeshLinkedList();
 
+   void searchTheElementOfMukeshLinkedList();
+
    void displayMukeshLinkedList();
 
 
+
+   enum LinkedListErrorCode {
+
+       LinkedList_Error_Code__INVALIDE = 0 ,
+       LinkedList_Error_Code__EMPTY ,
+       LinkedList_Error_Code__NOT_FOUND ,
+       LinkedList_Error_Code__MOMORY_NOT_ALLOCATED ,
+       LinkedList_Error_Code__POSITION_OUT_OF_RANGE
+
+    };
+
+
+   void toStringLinkedList(LinkedListErrorCode error) {
+
+      switch(error) {
+
+      case LinkedList_Error_Code__EMPTY :
+
+         cout<<endl<<"***LinkedList empty***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__NOT_FOUND :
+
+         cout<<endl<<"***LinkedList not found***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__MOMORY_NOT_ALLOCATED :
+
+         cout<<endl<<"***Memory is not allocated***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__POSITION_OUT_OF_RANGE :
+
+         cout<<endl<<"***LinkedList Position out of range***"<<endl;
+         break;
+
+      case LinkedList_Error_Code__INVALIDE :
+
+         cout<<endl<<"***LinkedList invalide***"<<endl;
+         break;
+      }
+   }
 };
 
 
-void MukeshLinkedList::toStringLinkedList(LinkedListErrorCode error) {
 
-   switch(error) {
-
-   case LinkedList_Error_Code__EMPTY :
-
-      cout<<endl<<"***LinkedList empty***"<<endl;
-      break;
-
-   case LinkedList_Error_Code__NOT_FOUND :
-
-      cout<<endl<<"***LinkedList not found***"<<endl;
-      break;
-
-   case LinkedList_Error_Code__MOMORY_NOT_ALLOCATED :
-
-      cout<<endl<<"***Memory is not allocated***"<<endl;
-      break;
-
-   case LinkedList_Error_Code__POSITION_OUT_OF_RANGE :
-
-      cout<<endl<<"***LinkedList Position out of range***"<<endl;
-      break;
-
-   case LinkedList_Error_Code__INVALIDE :
-
-      cout<<endl<<"***LinkedList invalide***"<<endl;
-      break;
-   }
-}
 
 /*Create a new Mukesh node*/
 MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
@@ -336,6 +343,46 @@ void MukeshLinkedList::sortTheMukeshLinkedList() {
 }
 
 
+void MukeshLinkedList::searchTheElementOfMukeshLinkedList() {
+
+   int pos = 0 , value;
+
+   MukeshNode *mukeshNode;
+
+   bool flag = false;
+
+   if (start == NULL) {
+
+      toStringLinkedList(LinkedList_Error_Code__EMPTY);
+      return ;
+   }
+
+   cout<<endl<<"Enter the value to be search"<<endl;
+   cin>>value;
+
+   mukeshNode = start;
+
+   while (mukeshNode != NULL) {
+
+      pos++; // Counting the position
+
+      if (mukeshNode->data == value) {
+
+         flag = true;
+         cout<<endl<<"Element  "<<value<<"  is found at position  "<<pos<<endl;
+      }
+
+      mukeshNode = mukeshNode->next;
+   }
+
+   if (!flag) {
+
+      cout<<endl<<"Element "<<value<<" not found in the list"<<endl;
+   }
+
+}
+
+
 /*Display the Linkedlist Node*/
 void MukeshLinkedList::displayMukeshLinkedList() {
 
@@ -384,7 +431,9 @@ int main() {
 
       cout<<"05. Sort the linkedlist"<<endl;
 
-      cout<<"06. Display the nodes"<<endl;
+      cout<<"06. Search the element in the linkedlist"<<endl;
+
+      cout<<"07. Display the nodes"<<endl;
 
 
       cout<<"10. Exit the LinkedList Operation"<<endl;
@@ -431,7 +480,15 @@ int main() {
 
 
       case 6 :
-         cout <<"6. Display the Mukesh LinkedList"<<endl;
+
+         cout<<"6. Search the element in the linkedlist"<<endl;
+
+         mukeshLinkedList.searchTheElementOfMukeshLinkedList();
+         break;
+
+
+      case 7 :
+         cout <<"7. Display the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.displayMukeshLinkedList();
 
