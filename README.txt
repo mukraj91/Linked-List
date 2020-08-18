@@ -26,6 +26,12 @@ Insert the element in the linkedlist.
 (vi) Sort the linkedlist of the element 
 (vii) Search the element of the linkedlist
 
+--------------------------------------------
+18/08/2020
+
+(viii) Update the element in linkedlist
+
+
 
 
 

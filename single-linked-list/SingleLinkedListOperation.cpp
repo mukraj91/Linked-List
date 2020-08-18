@@ -45,6 +45,8 @@ public:
    void sortTheMukeshLinkedList();
 
    void searchTheElementOfMukeshLinkedList();
+   void updateTheElementOfMukeshLinkedList();
+   void reverseTheMukeshLinkedList();
 
    void displayMukeshLinkedList();
 
@@ -383,6 +385,55 @@ void MukeshLinkedList::searchTheElementOfMukeshLinkedList() {
 }
 
 
+void MukeshLinkedList::updateTheElementOfMukeshLinkedList() {
+
+   int value, pos, i;
+
+   MukeshNode* mukeshNode;
+
+   if (start == NULL) {
+
+      toStringLinkedList(LinkedList_Error_Code__EMPTY);
+      return ;
+   }
+
+   cout<<endl<<"Enter the node position to be updated"<<endl;
+   cin>>pos;
+
+   cout<<endl<<"Enter the new value of the node"<<endl;
+   cin>>value;
+
+   mukeshNode = start; // Assign the start of the node
+
+   if (pos == 1) { /*If node position is one then insert the new value at the first node*/
+
+      mukeshNode->data = value;
+
+    }
+   else {
+
+      for (i = 0 ; i < pos -1 ; i++) {
+
+         if (mukeshNode == NULL) {
+
+            toStringLinkedList(LinkedList_Error_Code__POSITION_OUT_OF_RANGE);
+            return ;
+         }
+         mukeshNode = mukeshNode->next;
+      }
+
+      mukeshNode->data = value;
+   }
+
+   cout<<endl<<"Node Updated"<<endl;
+}
+
+
+void MukeshLinkedList::reverseTheMukeshLinkedList() {
+
+}
+
+
 /*Display the Linkedlist Node*/
 void MukeshLinkedList::displayMukeshLinkedList() {
 
@@ -433,7 +484,9 @@ int main() {
 
       cout<<"06. Search the element in the linkedlist"<<endl;
 
-      cout<<"07. Display the nodes"<<endl;
+      cout <<"07. Update node element with new value"<<endl;
+
+      cout<<"08. Display the nodes"<<endl;
 
 
       cout<<"10. Exit the LinkedList Operation"<<endl;
@@ -488,7 +541,15 @@ int main() {
 
 
       case 7 :
-         cout <<"7. Display the Mukesh LinkedList"<<endl;
+
+         cout<<"7. Update node element with new value"<<endl;
+
+         mukeshLinkedList.updateTheElementOfMukeshLinkedList();
+         break;
+
+
+      case 8 :
+         cout <<"8. Display the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.displayMukeshLinkedList();
 
