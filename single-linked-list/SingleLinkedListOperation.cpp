@@ -1,5 +1,5 @@
 /*
- * InsertAtBeginning.cpp
+ * SingleLinkedListOperation.cpp
  *
  *  Created on: 12-Aug-2020
  *      Author: MukeshRaj
@@ -23,9 +23,6 @@ class MukeshLinkedList {
 
 public:
 
-
-
-
    // MukeshLinkedList Constructor
    MukeshLinkedList() {
 
@@ -45,22 +42,23 @@ public:
    void sortTheMukeshLinkedList();
 
    void searchTheElementOfMukeshLinkedList();
+
    void updateTheElementOfMukeshLinkedList();
+
    void reverseTheMukeshLinkedList();
 
    void displayMukeshLinkedList();
 
 
-
    enum LinkedListErrorCode {
 
-       LinkedList_Error_Code__INVALIDE = 0 ,
-       LinkedList_Error_Code__EMPTY ,
-       LinkedList_Error_Code__NOT_FOUND ,
-       LinkedList_Error_Code__MOMORY_NOT_ALLOCATED ,
-       LinkedList_Error_Code__POSITION_OUT_OF_RANGE
+      LinkedList_Error_Code__INVALIDE = 0 ,
+      LinkedList_Error_Code__EMPTY ,
+      LinkedList_Error_Code__NOT_FOUND ,
+      LinkedList_Error_Code__MOMORY_NOT_ALLOCATED ,
+      LinkedList_Error_Code__POSITION_OUT_OF_RANGE
 
-    };
+   };
 
 
    void toStringLinkedList(LinkedListErrorCode error) {
@@ -94,8 +92,6 @@ public:
       }
    }
 };
-
-
 
 
 /*Create a new Mukesh node*/
@@ -409,7 +405,7 @@ void MukeshLinkedList::updateTheElementOfMukeshLinkedList() {
 
       mukeshNode->data = value;
 
-    }
+   }
    else {
 
       for (i = 0 ; i < pos -1 ; i++) {
@@ -427,12 +423,6 @@ void MukeshLinkedList::updateTheElementOfMukeshLinkedList() {
 
    cout<<endl<<"Node Updated"<<endl;
 }
-
-
-void MukeshLinkedList::reverseTheMukeshLinkedList() {
-
-}
-
 
 /*Display the Linkedlist Node*/
 void MukeshLinkedList::displayMukeshLinkedList() {
@@ -459,6 +449,70 @@ void MukeshLinkedList::displayMukeshLinkedList() {
    cout<<"NULL"<<endl;
 }
 
+void MukeshLinkedList::reverseTheMukeshLinkedList() {
+
+   MukeshNode *prevNode = NULL, *currentNode = NULL, *nextNode = NULL;
+
+
+   if (start == NULL) {
+
+      toStringLinkedList(LinkedList_Error_Code__EMPTY);
+      return ;
+
+   }
+
+   if (start->next == NULL) {
+
+      return ; // Because only one node available
+   }
+
+   currentNode = start;
+
+   while (currentNode != NULL) {
+
+      nextNode = currentNode->next;
+
+      currentNode->next = prevNode;
+
+      prevNode = currentNode;
+
+      currentNode = nextNode;
+
+   }
+
+   start = prevNode;
+
+   cout<<endl<<"LinkedList Reversed Successful done"<<endl;
+
+}
+
+void linkedListUserDetails() {
+
+   cout <<endl<<"================================"<<endl;
+   cout <<endl<<"Perform operation on Mukesh SingleLinkedList"<<endl;
+   cout <<endl<<"================================"<<endl;
+
+   cout<<"01. Insert at beginning"<<endl;
+
+   cout<<"02. Insert at last"<<endl;
+
+   cout<<"03. Insert at specific position"<<endl;
+
+   cout<<"04. Delete at specific position"<<endl;
+
+   cout<<"05. Sort the linkedlist"<<endl;
+
+   cout<<"06. Search the element in the linkedlist"<<endl;
+
+   cout<<"07. Update node element with new value"<<endl;
+
+   cout<<"08. Reverse the Linklist"<<endl;
+
+   cout<<"09. Display the nodes"<<endl;
+
+   cout<<"10. Exit the LinkedList Operation"<<endl;
+
+}
 
 /* Main function*/
 int main() {
@@ -466,30 +520,24 @@ int main() {
    MukeshLinkedList mukeshLinkedList;
    int choice;
 
+   enum LinkedListOperationType {
+
+      INSERT_AT_BEGINNING = 1,
+      INSERT_AT_LAST,
+      INSERT_AT_SPECIFIC_POSITION,
+      DELETE_AT_SPECIFIC_POSITION,
+      SORT_THE_LINKEDLIST,
+      SEARCH_THE_ELEMENT_IN_LINKEDLIST,
+      UPDATE_NODE_VALUE_WITH_NEW_VALUE,
+      REVERSE_THE_LINKEDLIST,
+      DISPLAY_THE_LINKEDLIST,
+      EXIT_FROM_PROGRAM
+   };
+
+
    while (1) {
 
-      cout <<endl<<"================================"<<endl;
-      cout <<endl<<"Perform operation on Mukesh SingleLinkedList"<<endl;
-      cout <<endl<<"================================"<<endl;
-
-      cout<<"01. Insert at beginning"<<endl;
-
-      cout<<"02. Insert at last"<<endl;
-
-      cout<<"03. Insert at specific position"<<endl;
-
-      cout<<"04. Delete at specific position"<<endl;
-
-      cout<<"05. Sort the linkedlist"<<endl;
-
-      cout<<"06. Search the element in the linkedlist"<<endl;
-
-      cout <<"07. Update node element with new value"<<endl;
-
-      cout<<"08. Display the nodes"<<endl;
-
-
-      cout<<"10. Exit the LinkedList Operation"<<endl;
+      linkedListUserDetails();
 
       cout<<"Enter your choice:";
       cin>>choice;
@@ -497,42 +545,42 @@ int main() {
       switch(choice)
       {
 
-      case 1 :
+      case INSERT_AT_BEGINNING :
          cout<<"1. Insert at beginning of the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.insetAtBeginningOfMukeshLinkedList();
 
          break;
 
-      case 2 :
+      case INSERT_AT_LAST :
          cout<<"2. Insert at last of the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.insertAtTailOfMukeshLinkedList();
 
          break;
 
-      case 3 :
+      case INSERT_AT_SPECIFIC_POSITION :
          cout<<"3. Insert at specific position of Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.insertAtParticularPositionOfMukeshList();
 
          break;
 
-      case 4 :
+      case DELETE_AT_SPECIFIC_POSITION :
          cout<<"4. Delete from specific position"<<endl;
 
          mukeshLinkedList.deleteAtSpecificPositionOfMukeshList();
 
          break;
 
-      case 5 :
+      case SORT_THE_LINKEDLIST :
          cout<<"5. Sort the linkedlist"<<endl;
 
          mukeshLinkedList.sortTheMukeshLinkedList();
          break;
 
 
-      case 6 :
+      case SEARCH_THE_ELEMENT_IN_LINKEDLIST :
 
          cout<<"6. Search the element in the linkedlist"<<endl;
 
@@ -540,7 +588,7 @@ int main() {
          break;
 
 
-      case 7 :
+      case UPDATE_NODE_VALUE_WITH_NEW_VALUE :
 
          cout<<"7. Update node element with new value"<<endl;
 
@@ -548,15 +596,22 @@ int main() {
          break;
 
 
-      case 8 :
-         cout <<"8. Display the Mukesh LinkedList"<<endl;
+      case REVERSE_THE_LINKEDLIST:
+
+         cout<<"8. Reverse the linkedlist"<<endl;
+
+         mukeshLinkedList.reverseTheMukeshLinkedList();
+         break;
+
+      case DISPLAY_THE_LINKEDLIST :
+         cout <<"9. Display the Mukesh LinkedList"<<endl;
 
          mukeshLinkedList.displayMukeshLinkedList();
 
          break;
 
-      case 10 :
-         cout<<"Exit the Linkedlist Operation"<<endl;
+      case EXIT_FROM_PROGRAM :
+         cout<<"10. Exit the Linkedlist Operation"<<endl;
 
          exit(1);
 

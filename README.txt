@@ -30,6 +30,8 @@ Insert the element in the linkedlist.
 18/08/2020
 
 (viii) Update the element in linkedlist
+(ix) Reverse the linkedlist
+(x) Exit for the program
 
 
 
