@@ -33,6 +33,16 @@ Insert the element in the linkedlist.
 (ix) Reverse the linkedlist
 (x) Exit for the program
 
+==========================================================
+
+24/08/2020 
+
+Double LinkedList Operation :- 
+
+==========================================================
+
+Double LinkedList Introduction :- 
+
 
 
 
