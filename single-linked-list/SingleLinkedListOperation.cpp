@@ -94,6 +94,16 @@ public:
 };
 
 
+/**
+ ******************************************************************************
+ * Description     : create a new node of the single linkedlist
+ * Function name   : createMukeshNode
+ * Parameters Type : int
+ * Return Type     : MukeshNode
+ ******************************************************************************
+ **/
+
+
 /*Create a new Mukesh node*/
 MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
 
@@ -115,7 +125,16 @@ MukeshNode* MukeshLinkedList::createMukeshNode(int value) {
 
 }
 
-/* Insert at beginning*/
+
+/**
+ ******************************************************************************
+ * Description     : Insert a node at beginning of the single linkedlist
+ * Function name   : insetAtBeginningOfMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
 void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 
    struct MukeshNode *mukeshNode, *temp;
@@ -143,6 +162,17 @@ void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
    cout<<"Element inserted at beginning"<<endl;
 
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Insert a node at tail of the single linkedlist
+ * Function name   : insertAtTailOfMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
 
 void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
    struct MukeshNode *mukeshNode, *temp;
@@ -180,6 +210,16 @@ void MukeshLinkedList::insertAtTailOfMukeshLinkedList() {
    cout<<"Element inserted at last"<<endl;
 
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Insert a node at particular position of the single linkedlist
+ * Function name   : insertAtParticularPositionOfMukeshList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
 
 
 void MukeshLinkedList::insertAtParticularPositionOfMukeshList() {
@@ -237,9 +277,17 @@ void MukeshLinkedList::insertAtParticularPositionOfMukeshList() {
    else {
       toStringLinkedList(LinkedList_Error_Code__POSITION_OUT_OF_RANGE);
    }
-
-
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Insert a node at particular position of the single linkedlist
+ * Function name   : deleteAtSpecificPositionOfMukeshList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
 
 
 void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
@@ -306,6 +354,16 @@ void MukeshLinkedList::deleteAtSpecificPositionOfMukeshList() {
 }
 
 
+/**
+ ******************************************************************************
+ * Description     : Sort the element of the single linkedlist
+ * Function name   : sortTheMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
+
 void MukeshLinkedList::sortTheMukeshLinkedList() {
 
    MukeshNode *mukeshNode, *ptr;
@@ -339,6 +397,16 @@ void MukeshLinkedList::sortTheMukeshLinkedList() {
    }
 
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Search the element of the single linkedlist
+ * Function name   : searchTheElementOfMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
 
 
 void MukeshLinkedList::searchTheElementOfMukeshLinkedList() {
@@ -379,6 +447,16 @@ void MukeshLinkedList::searchTheElementOfMukeshLinkedList() {
    }
 
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Update the element of the single linkedlist
+ * Function name   : updateTheElementOfMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
 
 
 void MukeshLinkedList::updateTheElementOfMukeshLinkedList() {
@@ -424,7 +502,17 @@ void MukeshLinkedList::updateTheElementOfMukeshLinkedList() {
    cout<<endl<<"Node Updated"<<endl;
 }
 
-/*Display the Linkedlist Node*/
+
+/**
+ ******************************************************************************
+ * Description     : Update the element of the single linkedlist
+ * Function name   : displayMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
+
 void MukeshLinkedList::displayMukeshLinkedList() {
 
    struct MukeshNode* mukeshNode;
@@ -448,6 +536,17 @@ void MukeshLinkedList::displayMukeshLinkedList() {
 
    cout<<"NULL"<<endl;
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Reverse the single linkedlist
+ * Function name   : reverseTheMukeshLinkedList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
 
 void MukeshLinkedList::reverseTheMukeshLinkedList() {
 
@@ -486,6 +585,17 @@ void MukeshLinkedList::reverseTheMukeshLinkedList() {
 
 }
 
+
+/**
+ ******************************************************************************
+ * Description     : Display single linkedlist usecase
+ * Function name   : linkedListUserDetails
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
+
 void linkedListUserDetails() {
 
    cout <<endl<<"================================"<<endl;
@@ -514,7 +624,17 @@ void linkedListUserDetails() {
 
 }
 
-/* Main function*/
+
+/**
+ ******************************************************************************
+ * Description     : Start of the programm
+ * Function name   : main
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
+
 int main() {
 
    MukeshLinkedList mukeshLinkedList;
