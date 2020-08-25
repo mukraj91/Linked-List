@@ -25,7 +25,9 @@ enum DoubleLinkedListOperationType {
    INSERT_AT_LAST ,
    INSERT_AT_SPECIFIC_POSITION ,
 
-   EXIT_FROM_THE_PROGRAM = 10
+   DISPLAY_THE_LIST = 9 ,
+
+   EXIT_FROM_THE_PROGRAM
 };
 
 // MukeshDoubleLinkedList contation all the double linkedlist information
@@ -42,6 +44,7 @@ public:
    MukeshNode* createNode(int value);
 
    void insertAtBeginning();
+   void displayList();
 
 
    enum DoubleLinkedListError {
@@ -53,28 +56,28 @@ public:
       DOUBLE_LINKEDLIST_ERROR__POSITION_OUT_RANGE
    };
 
-   void toStringDoubleLinkedList(DoubleLinkedListError error)  {
+   void handleDoubleLinkedListError(DoubleLinkedListError error)  {
 
       switch(error) {
 
       case DOUBLE_LINKEDLIST_ERROR__INVALIDE :
-         cout<<"Double LinkedList Invalide"<<endl;
+         cout<<endl<<"Double LinkedList Invalide"<<endl;
          break;
 
       case DOUBLE_LINKEDLIST_ERROR__EMPTY :
-         cout<<"Double LinkedList Empty"<<endl;
+         cout<<endl<<"Double LinkedList Empty"<<endl;
          break;
 
       case  DOUBLE_LINKEDLIST_ERROR__NOT_FOUND :
-         cout<<"Double LinkedList Not Found "<<endl;
+         cout<<endl<<"Double LinkedList Not Found "<<endl;
          break;
 
       case DOUBLE_LINKEDLIST_ERROR__MEMORY_NOT_ALLOCATED :
-         cout<<"Double LinkedList Memory Not Allocated"<<endl;
+         cout<<endl<<"Double LinkedList Memory Not Allocated"<<endl;
          break;
 
       case DOUBLE_LINKEDLIST_ERROR__POSITION_OUT_RANGE :
-         cout<<"Double LinkedList Position Out Of Range"<<endl;
+         cout<<endl<<"Double LinkedList Position Out Of Range"<<endl;
          break;
 
       }
@@ -82,40 +85,145 @@ public:
 
 };
 
+
+/**
+ ******************************************************************************
+ * Description     : create a new node of the double linkedlist
+ * Function name   : createNode
+ * Parameters Type : int
+ * Return Type     : MukeshNode
+ ******************************************************************************
+ **/
+
+
 MukeshNode*MukeshDoubleLinkedList::createNode(int value) {
 
-   MukeshNode *mukeshNode;
+   MukeshNode *mukeshNode = NULL;
 
-   return mukeshNode;
+   mukeshNode = new MukeshNode();
 
+   if (mukeshNode == NULL) {
+      handleDoubleLinkedListError(DOUBLE_LINKEDLIST_ERROR__MEMORY_NOT_ALLOCATED);
+      return 0;
+   }
+   else {
+      mukeshNode->data = value;
+      mukeshNode->next = NULL; // Right hand side of the double linkedlist
+      mukeshNode->prev = NULL; // Left hand side of the double linkedlist
 
+      return mukeshNode;
+   }
 }
 
+
+/**
+ ******************************************************************************
+ * Description     : Insert the element at the beginning of the linkedlist
+ * Function name   : insertAtBeginning
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
+
 void MukeshDoubleLinkedList::insertAtBeginning() {
+
+   MukeshNode *mukeshNode, *temp;
 
    int value;
 
    cout<<"Enter the value to insert in node"<<endl;
    cin>>value;
 
-   MukeshNode *temp = createNode(value);
+   mukeshNode = createNode(value);
 
-   cout<<"Created Node :" <<temp<<endl;
+   /*Here we are checking start node is empty or not.
+    * If empty then point the newly created node to start of the node.
+    * Else Insert the newly created node at first place */
+   if (start == NULL) {
+
+      start = mukeshNode;
+      start->next = NULL;
+      start->prev = NULL;
+   }
+   else {
+
+      temp = start;       // Hold the start node in temp variable
+      start = mukeshNode; // Newly created node become start of the linkedlist
+      start->next = temp; // start of next will be the next node of the start.
+      start->prev = NULL; // start of prev will be NULL.
+   }
+
+   cout<<endl<<"Element inserted at beginning"<<endl;
 
 }
 
 
-// For user details
+/**
+ ******************************************************************************
+ * Description     : Need to be display the element of the linkedlist
+ * Function name   : displayList
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
+
+void MukeshDoubleLinkedList::displayList() {
+
+   MukeshNode *temp;
+
+   if (start == NULL) {
+
+      handleDoubleLinkedListError(DOUBLE_LINKEDLIST_ERROR__EMPTY);
+   }
+   else
+   {
+      temp = start; // Start poin to the temp varible of type double linkedlist;
+
+      while(temp != NULL) {
+
+         cout<<temp->data<<"->";
+
+         temp = temp->next;
+      }
+   }
+
+   cout<<"NULL"<<endl;
+}
+
+
+/**
+ ******************************************************************************
+ * Description     : User details operation for double linkedlist
+ * Function name   : doubleLinkedListUserDetails
+ * Parameters Type : void
+ * Return Type     : void
+ ******************************************************************************
+ **/
+
 
 void doubleLinkedListUserDetails() {
 
    cout<<endl<<"*******************************************"<<endl;
    cout<<endl<<"Perform Operation On Double LinkedList"<<endl;
    cout<<endl<<"*******************************************"<<endl;
-   cout<<"01. Insert the at beginning"<<endl;
+   cout<<"01. Insert the at beginning. "<<endl;
+   cout<<"09. Display the double linkedlist. "<<endl;
 
    cout<<"10. Exit from the program"<<endl;
 }
+
+
+/**
+ ******************************************************************************
+ * Description     : Main funtion of the code
+ * Function name   : main
+ * Parameters Type : void
+ * Return Type     : int
+ ******************************************************************************
+ **/
+
 
 int main() {
 
@@ -136,6 +244,11 @@ int main() {
          cout<<endl<<"Insert the element at beginnning of the linkedlist"<<endl;
 
          mukeshDoubleLinkedList.insertAtBeginning();
+         break;
+
+      case DISPLAY_THE_LIST :
+
+         mukeshDoubleLinkedList.displayList();
          break;
 
       case EXIT_FROM_THE_PROGRAM :
