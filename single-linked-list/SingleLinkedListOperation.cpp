@@ -630,7 +630,7 @@ void linkedListUserDetails() {
  * Description     : Start of the programm
  * Function name   : main
  * Parameters Type : void
- * Return Type     : void
+ * Return Type     : int
  ******************************************************************************
  **/
 
