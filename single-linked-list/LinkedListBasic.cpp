@@ -8,14 +8,18 @@
 #include<iostream>
 using namespace std;
 
+
+
 struct Node {
 
    int data;
-   struct Node *next;
+   Node *next;
 
    };
 
-void displyList(Node* node) {
+
+void displyList(Node* node) 
+{
 
    while(node != NULL) {
 
@@ -25,7 +29,10 @@ void displyList(Node* node) {
    cout<<endl;
 }
 
-int main () {
+
+
+int main () 
+{
 
    Node *head = NULL;
    Node *second = NULL;

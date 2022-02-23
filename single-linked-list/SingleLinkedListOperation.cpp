@@ -5,27 +5,31 @@
  *      Author: MukeshRaj
  */
 
+
+
 #include<iostream>
 #include<stdlib.h>
 
 using namespace std;
 
-/* MukeshNode Declaration*/
-struct MukeshNode {
 
+/* MukeshNode Declaration*/
+
+struct MukeshNode 
+{
    int data;
    struct MukeshNode *next;
 } *start;
 
 
 /*MukeshLinkedList Class Declation*/
-class MukeshLinkedList {
+class MukeshLinkedList 
+{
 
 public:
-
    // MukeshLinkedList Constructor
-   MukeshLinkedList() {
-
+   MukeshLinkedList() 
+   {
       start = 0;
    }
 
@@ -146,7 +150,8 @@ void MukeshLinkedList::insetAtBeginningOfMukeshLinkedList() {
 
    mukeshNode = createMukeshNode(value);
 
-   if (start == NULL) {
+   if (start == NULL) 
+   {
 
       start = mukeshNode;
       start->next = NULL;
