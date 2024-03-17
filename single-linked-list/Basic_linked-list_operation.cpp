@@ -116,6 +116,93 @@ int recursive_sum_of_all_the_element(struct Node*node)
 }
 
 
+// maximum number in linkedlist
+
+int maxNumber(struct Node *node)
+{
+	
+	
+	int max = -32768;// MIN_INT; // -32768
+	
+	while(node)
+	{
+		
+		if(node->data > max){
+			
+			max = node->data;
+			node = node->next;
+		}
+	}
+	return max;
+}
+
+
+
+// Recursive max element
+
+int recursive_maxNumber(struct Node *node)
+{
+	
+	int max = -32768;// MIN_INT; // -32768
+	 
+	 if(node == NULL)
+	 return max;
+	 
+	 max = recursive_maxNumber(node->next);
+	 
+	 return (max>node->data) ? max : node->data;
+
+}
+
+// Search the node
+
+Node* search(struct Node *node, int key)
+{
+	
+	while(node)
+	{
+		
+		if(key == node->data)
+		return (node);
+		
+		node = node->next;
+	}
+	
+	return NULL;
+}
+
+
+// Reduce the time complexity 
+// Point the key to firrt node once key match.
+
+Node* optimal_search(Node* node, int key)
+{
+	
+	Node *q;
+	
+	while(node)
+	{
+		if(node->data == key)
+		{
+			// If key found
+			
+			q->next = node->next;
+			node->next = first;
+			first = node;
+			return node;
+		}
+		q = node;
+		node= node->next;
+	}
+	return NULL;
+}
+
+
+
+
+
+
+
 
 int main () 
 {
@@ -147,5 +234,30 @@ int main ()
   cout<<"Recursive sum of all the element = "<< recursive_sum_of_all_the_element(first)<<endl;
   
   
+  // max number
+  
+  cout<<"Maximum Number in LinkedList: "<<maxNumber(first)<<endl;
+  
+  cout<<"Maximum Number in LinkedList using recursion : "<<recursive_maxNumber(first)<<endl;
+  
+  
+  
+  // Search 
+  
+  Node *search_element = search(first, 22);
+  if(search_element)
+   cout<<"Key is found : "<<search_element->data<<endl;
+   else
+   cout<<"Key not found: "<<endl;
+   
+   // optimal
+   Node *search = optimal_search(first, 55);
+   
+   if(search)
+   cout<<"Key is found : "<<search->data<<endl;
+   else
+   cout<<"Key not found: "<<endl;
+   
+   
 
 }
